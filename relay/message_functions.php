@@ -5,7 +5,7 @@ require_once("db_functions.php");
 
 
 //This function sends messages
-function send_message($sender_id, $message_content) {
+function send_message($sender_id, $message_content, $latitude = -1, $longitude = -1) {
 
 	$return_array = array();
 	$return_array["success"] = false;
@@ -14,10 +14,12 @@ function send_message($sender_id, $message_content) {
 	
 	$sender_id = mysqli_real_escape_string($c,$sender_id);
 	$message_content_sanitized = mysqli_real_escape_string($c,$message_content);
+	$latitude = mysqli_real_escape_string($c,$latitude;
+	$longitude = mysqli_real_escape_string($c,$longitude);
 
 	//insert message into db
-	$q  = "INSERT INTO messages (sender_id, message_content, datetime) ";
-	$q .= "VALUES ($sender_id, '$message_content_sanitized', NOW())";
+	$q  = "INSERT INTO messages (sender_id, message_content , latitude, longitude, datetime) ";
+	$q .= "VALUES ($sender_id, '$message_content_sanitized', '$latitude', '$longitude', NOW())";
 	$success = db_query($c, $q);
 
 	if($success == true) {
