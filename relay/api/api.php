@@ -327,7 +327,7 @@ function get_messages_mobile()
 
 
 	// attempt to get the messages
-	$response = get_message();
+	$response = get_messages();
 	if($response["success"] == true)
 	{
 		// message was successfully sent

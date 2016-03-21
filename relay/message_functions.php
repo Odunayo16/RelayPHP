@@ -46,7 +46,7 @@ function get_messages(){
 
 	$return_array = array();
 	$return_array["success"] = false;
-	$return_array["messages"]= array();
+	$return_array["messages"] = array();
 
 	$c = db_connect();
 
@@ -64,6 +64,6 @@ function get_messages(){
     	$return_array["messages"][] = $row;
 	}
 
-	return $return_array
+	return $return_array;
 
 }
