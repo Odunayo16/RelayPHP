@@ -155,7 +155,7 @@ $app->error(function (\Exception $e) use ($app) {
 
 // Private Messaging functions
 // $app->post('/messages', 'authenticate', 'send_private_message_mobile');
-$app->post('/messages', 'send_private_message_mobile');
+$app->post('/messages', 'send_message_mobile');
 
 
 //--------------------------------------------------------------------------------------
