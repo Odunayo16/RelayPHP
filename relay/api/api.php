@@ -154,8 +154,9 @@ $app->error(function (\Exception $e) use ($app) {
 // $app->delete('/sessions/:id', 'authenticate', 'delete_session_mobile');
 
 // Private Messaging functions
-// $app->post('/messages', 'authenticate', 'send_private_message_mobile');
+// $app->post('/messages', 'authenticate', 'send_message_mobile');
 $app->post('/messages', 'send_message_mobile');
+$app->get('/messages', 'get_messages_mobile');
 
 
 //--------------------------------------------------------------------------------------
@@ -308,6 +309,30 @@ function send_message_mobile()
 		// message was successfully sent
 		$response_status_code = 201;
 		$return_array["datetime"] = $response["datetime"];
+	}
+
+	// return the correct HTTP status code, and data
+	return_response($response_status_code, $return_array);
+}
+
+function get_messages_mobile()
+{
+	require_once("message_functions.php");
+
+	// initialize response to HTTP Status Code
+	$response_status_code = 400;
+
+	// initialize return array
+	$return_array = null;
+
+
+	// attempt to get the messages
+	$response = get_message();
+	if($response["success"] == true)
+	{
+		// message was successfully sent
+		$response_status_code = 200;
+		$return_array["messages"] = $response["messages"];
 	}
 
 	// return the correct HTTP status code, and data

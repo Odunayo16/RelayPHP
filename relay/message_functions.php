@@ -40,3 +40,30 @@ function send_message($sender_id, $message_content, $latitude = -1, $longitude =
 
 	return $return_array;
 }
+
+//get messages from the db
+function get_messages(){
+
+	$return_array = array();
+	$return_array["success"] = false;
+	$return_array["messages"]= array();
+
+	$c = db_connect();
+
+	$q  = "SELECT * FROM messages ORDER BY datetime DESC LIMIT 1";
+	$qexe = db_query($c, $q);
+
+	if (!$qexe) {
+		return $return_array;
+	}
+	else {
+		$return_array["success"] = true;
+	}
+
+	while($row = mysqli_fetch_assoc($qexe)) {
+    	$return_array["messages"][] = $row;
+	}
+
+	return $return_array
+
+}
