@@ -5,7 +5,7 @@ if (!empty($_SERVER["DOCUMENT_ROOT"])) {
 	set_include_path ( $_SERVER['DOCUMENT_ROOT'] . "/");
 }
 else {
-	set_include_path ( "/srv/www/friendsy1/current/friendsy-website/" );
+	set_include_path ( "/srv/www/relay_app/current/relay/");
 }
 
 
