@@ -30,11 +30,11 @@ function send_message($sender_id, $message_content, $latitude = -1, $longitude =
 		$return_array["message_id"] = $most_recent_message_id;
 
 		// next, physically send the message to the recipient
-		// $pusher = new Pusher(PUSHER_APP_KEY, PUSHER_APP_SECRET, PUSHER_APP_ID); 
+	    $pusher = new Pusher(PUSHER_APP_KEY, PUSHER_APP_SECRET, PUSHER_APP_ID); 
 		
 		// send message to everyone
-		// $channel_name = "feed";
-		// $success = $pusher->trigger($channel_name, 'receive_message', array( 'message' => $message_content, 'sender_id' => $sender_id, 'datetime' => $time));	
+		 $channel_name = "feed";
+		 $success = $pusher->trigger($channel_name, 'receive_message', array( 'message' => $message_content, 'sender_id' => $sender_id, 'datetime' => $time));	
 
 	}
 

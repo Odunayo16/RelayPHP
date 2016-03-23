@@ -31,9 +31,9 @@ define('AWS_CANONICAL_NAME', '');
 
 
 // Pusher Credentials go here
-define("PUSHER_APP_ID", '');
-define("PUSHER_APP_KEY", '');
-define("PUSHER_APP_SECRET", '');
+define("PUSHER_APP_ID", '190861');
+define("PUSHER_APP_KEY", 'a04c7c7c9680d7952687');
+define("PUSHER_APP_SECRET", 'c9b4d08111894fe6a6bd');
 
 
 date_default_timezone_set('EST');
