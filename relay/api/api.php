@@ -157,6 +157,7 @@ $app->error(function (\Exception $e) use ($app) {
 // $app->post('/messages', 'authenticate', 'send_message_mobile');
 $app->post('/messages', 'send_message_mobile');
 $app->get('/messages', 'get_messages_mobile');
+$app->post('/messages', 'send_location()')
 
 
 //--------------------------------------------------------------------------------------
@@ -337,6 +338,24 @@ function get_messages_mobile()
 
 	// return the correct HTTP status code, and data
 	return_response($response_status_code, $return_array);
+}
+
+function send_location() {
+	require_once("message_functions.php");
+
+	// initialize response to HTTP Status Code
+	$response_status_code = 400;
+	$return_array = null;
+
+	$response = send_location($latitude, $longitude);
+
+	if ($response == true){
+		$response_status_code = 201;
+		$return_array = $response
+	}
+
+	return_response($response_status_code, $return_array);
+
 }
 
 // Run the SLIM application, this must be called last

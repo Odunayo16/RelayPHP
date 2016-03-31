@@ -5,6 +5,15 @@ require_once("db_functions.php");
 require_once('Pusher.php'); 
 
 
+function send_location($latitude, $longitude) {
+	$pusher = new Pusher(PUSHER_APP_KEY, PUSHER_APP_SECRET, PUSHER_APP_ID); 
+	$channel_name = "location_data";
+	$success = $pusher->trigger($channel_name, 'receive_location', array('latitude' => $latitude, 'longitude' => $longitude));	
+
+	return true;
+
+}
+
 //This function sends messages
 function send_message($sender_id, $message_content, $latitude = -1, $longitude = -1) {
 
