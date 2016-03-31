@@ -157,7 +157,7 @@ $app->error(function (\Exception $e) use ($app) {
 // $app->post('/messages', 'authenticate', 'send_message_mobile');
 $app->post('/messages', 'send_message_mobile');
 $app->get('/messages', 'get_messages_mobile');
-$app->post('/messages', 'send_location');
+$app->post('/messages', 'send_location_mobile');
 
 
 //--------------------------------------------------------------------------------------
@@ -340,7 +340,7 @@ function get_messages_mobile()
 	return_response($response_status_code, $return_array);
 }
 
-function send_location() {
+function send_location_mobile() {
 	require_once("message_functions.php");
 
 	// initialize response to HTTP Status Code
