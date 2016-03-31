@@ -347,6 +347,11 @@ function send_location() {
 	$response_status_code = 400;
 	$return_array = null;
 
+	$body_params = get_request_body_params();
+
+	$latitude = trim($body_params["latitude"]);
+	$longitude = trim($body_params["longitude"]);
+
 	$response = send_location($latitude, $longitude);
 
 	if ($response == true){
