@@ -157,7 +157,7 @@ $app->error(function (\Exception $e) use ($app) {
 // $app->post('/messages', 'authenticate', 'send_message_mobile');
 $app->post('/messages', 'send_message_mobile');
 $app->get('/messages', 'get_messages_mobile');
-// $app->post('/messages', 'send_location_mobile');
+ $app->post('/messages', 'send_location_mobile');
 
 
 //--------------------------------------------------------------------------------------
@@ -316,6 +316,30 @@ function send_message_mobile()
 	return_response($response_status_code, $return_array);
 }
 
+function send_location_mobile() {
+	require_once("message_functions.php");
+
+	// initialize response to HTTP Status Code
+	$response_status_code = 400;
+	$return_array = null;
+
+	$body_params = get_request_body_params();
+
+	$latitude = trim($body_params["latitude"]);
+	$longitude = trim($body_params["longitude"]);
+
+	$response = send_location($latitude, $longitude);
+
+	if ($response["success"] == true){
+		$response_status_code = 201;
+		$return_array = $response;
+	}
+
+	return_response($response_status_code, $return_array);
+
+}
+
+
 function get_messages_mobile()
 {
 	require_once("message_functions.php");
@@ -340,28 +364,6 @@ function get_messages_mobile()
 	return_response($response_status_code, $return_array);
 }
 
-// function send_location_mobile() {
-// 	require_once("message_functions.php");
-
-// 	// initialize response to HTTP Status Code
-// 	$response_status_code = 400;
-// 	$return_array = null;
-
-// 	$body_params = get_request_body_params();
-
-// 	$latitude = trim($body_params["latitude"]);
-// 	$longitude = trim($body_params["longitude"]);
-
-// 	$response = send_location($latitude, $longitude);
-
-// 	if ($response["success"] == true){
-// 		$response_status_code = 201;
-// 		$return_array = $response
-// 	}
-
-// 	return_response($response_status_code, $return_array);
-
-// }
 
 // Run the SLIM application, this must be called last
 $app->run();
