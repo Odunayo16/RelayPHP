@@ -329,17 +329,13 @@ function send_location_mobile() {
 	$longitude = trim($body_params["longitude"]);
 
 	$response = send_location($latitude, $longitude);
-
-	echo "Not in response";
+	
 	if ($response["success"] == true){
-
-		echo "Response == true";
+		
 		$response_status_code = 201;
 		$return_array["success"] = $response["success"];
-		echo "Response == true After"
 	}
 
-	echo "Right before Return";
 	return_response($response_status_code, $return_array);
 
 }
