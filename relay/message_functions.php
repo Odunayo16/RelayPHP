@@ -10,9 +10,9 @@ function send_location($latitude, $longitude) {
 	$return_array = array();
 	$return_array["success"] = true;
 
-	$pusher = new Pusher(PUSHER_APP_KEY, PUSHER_APP_SECRET, PUSHER_APP_ID); 
-	$channel_name = "location_data";
-	$success = $pusher->trigger($channel_name, 'receive_location', array( 'latitude' => $latitude, 'longitude' => $longitude));	
+	// $pusher = new Pusher(PUSHER_APP_KEY, PUSHER_APP_SECRET, PUSHER_APP_ID); 
+	// $channel_name = "location_data";
+	// $success = $pusher->trigger($channel_name, 'receive_location', array( 'latitude' => $latitude, 'longitude' => $longitude));	
 
 	return $return_array;
 
