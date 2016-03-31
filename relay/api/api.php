@@ -157,7 +157,7 @@ $app->error(function (\Exception $e) use ($app) {
 // $app->post('/messages', 'authenticate', 'send_message_mobile');
 $app->post('/messages', 'send_message_mobile');
 $app->get('/messages', 'get_messages_mobile');
-$app->post('/messages', 'send_location_mobile');
+// $app->post('/messages', 'send_location_mobile');
 
 
 //--------------------------------------------------------------------------------------
