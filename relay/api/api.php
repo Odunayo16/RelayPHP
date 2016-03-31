@@ -331,8 +331,9 @@ function send_location_mobile() {
 	$response = send_location($latitude, $longitude);
 
 	if ($response["success"] == true){
+		
 		$response_status_code = 201;
-		$return_array = $response;
+		$return_array["success"] = $response["success"];
 	}
 
 	return_response($response_status_code, $return_array);
