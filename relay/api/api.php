@@ -157,7 +157,7 @@ $app->error(function (\Exception $e) use ($app) {
 // $app->post('/messages', 'authenticate', 'send_message_mobile');
 $app->post('/messages', 'send_message_mobile');
 $app->get('/messages', 'get_messages_mobile');
- $app->post('/messages', 'send_location_mobile');
+$app->post('/location', 'send_location_mobile');
 
 
 //--------------------------------------------------------------------------------------
@@ -329,9 +329,9 @@ function send_location_mobile() {
 	$longitude = trim($body_params["longitude"]);
 
 	$response = send_location($latitude, $longitude);
-	
+
 	if ($response["success"] == true){
-		
+
 		$response_status_code = 201;
 		$return_array["success"] = $response["success"];
 	}
