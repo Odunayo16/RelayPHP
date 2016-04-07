@@ -325,6 +325,7 @@ function send_location_mobile() {
 
 	$body_params = get_request_body_params();
 
+	$userId = trim($body_params["userId"]);
 	$latitude = trim($body_params["latitude"]);
 	$longitude = trim($body_params["longitude"]);
 
