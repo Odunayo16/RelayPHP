@@ -329,7 +329,7 @@ function send_location_mobile() {
 	$latitude = trim($body_params["latitude"]);
 	$longitude = trim($body_params["longitude"]);
 
-	$response = send_location($latitude, $longitude);
+	$response = send_location($userId, $latitude, $longitude);
 
 	if ($response["success"] == true){
 
